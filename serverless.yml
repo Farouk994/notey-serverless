@@ -13,8 +13,8 @@
 
 service: notey-serverless-api
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: notey-serverless-api
+org: rageless
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -59,6 +59,39 @@ provider:
 functions:
   hello:
     handler: handler.hello
+  createNote: 
+    handler: handler.createNote
+    # event array represents any event that will invoke the particular lambda function
+    events: 
+      - http:
+         method: post
+         path: notes
+  updateNote: 
+    handler: handler.updateNote
+    # event array represents any event that will invoke the particular lambda function
+    events: 
+      - http:
+         method: put
+         path: notes/{id} # identified as variable in serverless   
+  deleteNote: 
+    handler: handler.deleteNote
+    # event array represents any event that will invoke the particular lambda function
+    events: 
+      - http:
+         method: delete
+         path: notes/{id} # identified as variable in serverless   
+  getAllNotes: 
+    handler: handler.getAllNotes
+    # event array represents any event that will invoke the particular lambda function
+    events: 
+      - http:
+         method: get
+         path: notes/all # identified as variable in serverless   
+ # 
+
+# create a lambda function for creating a new note 
+
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
