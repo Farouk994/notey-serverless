@@ -34,3 +34,9 @@
     - TableName
 
 ### Configuring lambda functions with dynamoDB 
+- [DynamoDB Javascript SDK Docs](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html)
+- The [document client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html) simplifies working with items in Amazon DynamoDB by abstracting away the notion of attribute values. This abstraction annotates native JavaScript types supplied as input parameters, as well as converts annotated response data to native JavaScript types.
+- Install aws-sdk 
+- Add permission to add data inside dynamoDB table
+- Cloud Formation Intrinsic functions?
+- Serverless plugin? npm i serverless-iam-roles-per-function

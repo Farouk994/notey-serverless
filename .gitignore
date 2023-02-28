@@ -6,3 +6,4 @@ jspm_packages
 .serverless
 serverless_accessKeys.csv
 serverless_credentials.csv
+file.yml

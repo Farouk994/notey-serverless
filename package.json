@@ -1,6 +1,27 @@
 {
   "dependencies": {
+    "aws-sdk": "^2.1324.0",
     "serverless": "^3.27.0"
   },
-  "name": "notey-serverless"
+  "name": "notey-serverless",
+  "description": "- Install serverless framework - `npm i serverless` - login AWS account  - Create IAM user(To use the credentials in local env) to configure with serverless CLI then get credential",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Farouk994/notey-serverless.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Farouk994/notey-serverless/issues"
+  },
+  "homepage": "https://github.com/Farouk994/notey-serverless#readme"
 }
