@@ -56,9 +56,9 @@ provider:
 #    - include-me.js
 #    - include-me-dir/**
 
+  # hello:
+  #   handler: handler.hello
 functions:
-  hello:
-    handler: handler.hello
   createNote: 
     handler: handler.createNote
     # event array represents any event that will invoke the particular lambda function
@@ -133,12 +133,22 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+# creates dynamoDB table
+resources:
+ Resources:
+   NewResource:
+     Type: AWS::DynamoDB::Table
+     Properties:
+       TableName: notes
+       BillingMode: PAY_PER_REQUEST
+       AttributeDefinitions:
+         - AttributeName: notesId # 
+           AttributeType: S #string 
+       KeySchema:
+         - AttributeName: notesId
+           KeyType: HASH
+
+          
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"

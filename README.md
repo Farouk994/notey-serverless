@@ -25,3 +25,12 @@
 ### After deploying
 - Try the endpoint in postman to see if the lambda function works 
   - Example endpoint: POST - `https://6oxo1lmitg.execute-api.us-east-1.amazonaws.com/dev/notes`
+
+### Configuring CloudFormation resource
+- Documentation [SetUp DynamoDB with AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html)
+- Since yml is being used copy info from the documentation in yml configuration
+  - Required properties include 
+    - KeySchema
+    - TableName
+
+### Configuring lambda functions with dynamoDB 
