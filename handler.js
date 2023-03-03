@@ -41,10 +41,43 @@ module.exports.updateNote = async (event) => {
 
 module.exports.deleteNote = async (event) => {
   let noteId = event.pathParameters.id; // Get the id from the path
-  return {
-    statusCode: 200,
-    body: JSON.stringify(`Note ${noteId} has been deleted`),
+  try {
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: error.message }),
+    };
+  }
+};
+
+module.exports.getNoteById = async (event) => {
+  let id = event.pathParameters.id; // Get the id from the path
+  const params = {
+    TableName: 'notes',
+    Key: {
+      notesId: id,
+    },
   };
+
+  try {
+    const data = await documentClient.get(params).promise();
+    if (!data.Item) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ message: 'Note not found' }),
+      };
+    } else {
+      return {
+        statusCode: 200,
+        body: JSON.stringify(data.Item),
+      };
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: error.message }),
+    };
+  }
 };
 
 module.exports.getAllNotes = async (event) => {

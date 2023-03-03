@@ -50,6 +50,17 @@ functions:
       - http:
           method: delete
           path: notes/{id} # identified as variable in serverless
+  getNoteById:
+    handler: handler.getNoteById
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:GetItem
+        Resource: !GetAtt NewResource.Arn
+    events: 
+      - http:
+          method: get
+          path: notes/{id}
   getAllNotes:
     handler: handler.getAllNotes
     iamRoleStatements: 
