@@ -40,3 +40,8 @@
 - Add permission to add data inside dynamoDB table
 - Cloud Formation Intrinsic functions?
 - Serverless plugin? npm i serverless-iam-roles-per-function
+
+
+
+
+

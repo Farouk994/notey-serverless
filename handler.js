@@ -48,8 +48,23 @@ module.exports.deleteNote = async (event) => {
 };
 
 module.exports.getAllNotes = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(`All notes are fetched`),
-  };
+  try {
+    const params = {
+      TableName: 'notes',
+    };
+    const data = await documentClient.scan(params).promise();
+    if (data.Items.length === 0) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ message: 'No notes found' }),
+      };
+    } else {
+      return { statusCode: 200, body: JSON.stringify(data.Items) };
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: error.message }),
+    };
+  }
 };

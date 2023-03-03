@@ -52,6 +52,11 @@ functions:
           path: notes/{id} # identified as variable in serverless
   getAllNotes:
     handler: handler.getAllNotes
+    iamRoleStatements: 
+      - Effect: Allow
+        Action:
+          - dynamodb:Scan
+        Resource: !GetAtt NewResource.Arn
     # event array represents any event that will invoke the particular lambda function
     events:
       - http:
